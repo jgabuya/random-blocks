@@ -1,55 +1,45 @@
-import jQuery from 'jquery'
+import { random } from 'lodash'
+import { addRandom, removeRandom } from './use-cases'
+import {
+  getElementById,
+  getViewportDimensions,
+  insertNode,
+  removeNode,
+} from './helpers/dom'
+import { RUNTIME_SPEED_MS } from './config'
 
-const getRandomColor = () => {
-  const letters = '0123456789ABCDEF'
-  let color = '#'
+const run = () => {
+  let nodes = []
 
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * letters.length)]
+  const { width, height } = getViewportDimensions()
+
+  const addRandomCallback = (node) => {
+    insertNode({
+      parent: getElementById('wrapper'),
+      node,
+    })
   }
 
-  return color
-}
+  setInterval(() => {
+    switch (random(0, 1)) {
+      case 0:
+        nodes = addRandom({
+          collection: nodes,
+          viewport: { width, height },
+          callback: addRandomCallback,
+        })
 
-const getRandomPosition = (min, max) => Math.random() * (max - min) + min
+        break
 
-function generateRandomBlock({
-  $, // jQuery object
-  $parent,
-  color,
-  position,
-}) {
-  const $el = $('<div></div>')
-    .css({
-      background: color,
-      top: position.top,
-      left: position.left,
-    })
-    .addClass('node')
-    .hide()
-
-  return $parent.append($el.fadeIn(500))
-}
-
-;(function ($) {
-  // cache DOM selectors
-  const $window = $(window)
-  const $wrapper = $('#wrapper')
-
-  const width = $window.width()
-  const height = $window.height()
-
-  setInterval(function () {
-    const position = {
-      top: getRandomPosition(0, height),
-      left: getRandomPosition(0, width),
+      case 1:
+        nodes = removeRandom({
+          collection: nodes,
+          callback: removeNode,
+        })
     }
 
-    generateRandomBlock({
-      $,
-      $parent: $wrapper,
-      color: getRandomColor(),
-      position,
-    })
-  }, 100)
-})(jQuery)
+    console.log({ nodes })
+  }, RUNTIME_SPEED_MS)
+}
+
+run()
