@@ -4,5 +4,8 @@
   "description": "Random blocks that appear/disappear on the screen",
   "main": "index.js",
   "author": "Jirffey Gabuya <jgabuya.github.io>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
 }
