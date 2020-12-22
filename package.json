@@ -6,6 +6,7 @@
   "author": "Jirffey Gabuya <jgabuya.github.io>",
   "license": "MIT",
   "dependencies": {
+    "jquery": "^3.5.1",
     "parcel-bundler": "^1.12.4"
   },
   "devDependencies": {
