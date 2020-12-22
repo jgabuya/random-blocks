@@ -1,0 +1,8 @@
+{
+  "name": "random-blocks",
+  "version": "0.1.0",
+  "description": "Random blocks that appear/disappear on the screen",
+  "main": "index.js",
+  "author": "Jirffey Gabuya <jgabuya.github.io>",
+  "license": "MIT"
+}
