@@ -1,21 +1,12 @@
 import { random, filter } from 'lodash'
-import { v4 } from 'uuid'
-import randomColor from 'randomcolor'
+import faker from 'faker'
 import { Node } from '../entities'
-import { NODE_MIN_WIDTH, NODE_MAX_WIDTH } from '../config'
+import { generateRandomEmoji } from '../helpers/emoji'
 
-const addRandom = ({ collection, viewport: { width, height }, callback }) => {
-  const dimension = random(NODE_MIN_WIDTH, NODE_MAX_WIDTH)
-
+const addRandom = ({ collection, callback }) => {
   const nodeToAdd = new Node({
-    id: v4(),
-    color: randomColor(),
-    width: dimension,
-    height: dimension,
-    position: {
-      x: random(0, width),
-      y: random(0, height),
-    },
+    id: faker.random.uuid(),
+    emoji: generateRandomEmoji(),
   })
 
   callback(nodeToAdd)
