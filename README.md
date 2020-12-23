@@ -1,5 +1,7 @@
 # Random Nodes
 
+![build](https://github.com/jgabuya/random-nodes/workflows/build/badge.svg)
+
 Random circular nodes that appear/disappear on the browser window. Each node contains a random emoji :)
 
 This repo contains a simple implementation of the [clean architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
