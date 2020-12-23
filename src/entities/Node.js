@@ -1,13 +1,7 @@
 class Node {
-  constructor({ id, color, width, height, position: { x, y } }) {
+  constructor({ id, emoji }) {
     this.id = id
-    this.color = color
-    this.width = width
-    this.height = height
-    this.position = {
-      x,
-      y,
-    }
+    this.emoji = emoji
   }
 }
 
